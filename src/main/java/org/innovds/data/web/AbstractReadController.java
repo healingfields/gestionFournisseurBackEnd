@@ -1,7 +1,5 @@
 package org.innovds.data.web;
 
-import java.util.Optional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Persistable;
@@ -11,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public abstract class AbstractReadController<T extends Persistable<ID>, ID> extends AbstractController<T, ID> {
 
 	@GetMapping("/{id}")
-	public Optional<T> findOne(@PathVariable ID id) {
-		return service.findOne(id);
+	public <DTO> DTO findOne(@PathVariable ID id) {
+		return (DTO) service.findOne(id).get();
 	}
 
 	@GetMapping
