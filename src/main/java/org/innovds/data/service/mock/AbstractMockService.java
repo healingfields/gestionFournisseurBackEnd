@@ -48,9 +48,9 @@ public abstract class AbstractMockService<T extends Identifiable<ID>, ID> implem
 		return null;
 	}
 	
-	public Optional<T> findOne(ID id) {
+	public <DTO> Optional<DTO> findOne(ID id) {
 		simulateWait();
-		return data.stream().filter(object -> ObjectUtils.nullSafeEquals(object.getId(), id)).findFirst();
+		return (Optional<DTO>) data.stream().filter(object -> ObjectUtils.nullSafeEquals(object.getId(), id)).findFirst();
 	}
 
 	public Page<T> find(String filter, Pageable pageable) {

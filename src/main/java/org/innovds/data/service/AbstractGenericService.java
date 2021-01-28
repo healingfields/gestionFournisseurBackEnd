@@ -14,7 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public abstract class AbstractGenericService<T, ID> implements IGenericService<T, ID> {
-	private IGenericJpaRepository<T, ID> repository;
+	protected IGenericJpaRepository<T, ID> repository;
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -38,20 +38,23 @@ public abstract class AbstractGenericService<T, ID> implements IGenericService<T
 	public void setDomainClass(Class<T> domainClass) {
 		repository.setDomainClass(domainClass);
 	}
-
-	@Override
-	public Optional<T> findOne(ID id) {
-		return repository.findById(id);
+	
+	public Optional<T> findById(ID id) {
+		return repository.findById(id);	
 	}
 
 	@Override
-	public Page<T> find(String filter, Pageable pageable) {
+	public <DTO> Optional<DTO> findOne(ID id) {
+		return (Optional<DTO>) repository.findById(id);	
+	}
+
+	@Override
+	public Page<?> find(String filter, Pageable pageable) {
 		return repository.findAll(pageable);
-//		return repository.find(filter, pageable);
 	}
 
 	@Override
-	public List<T> find(String filter) {
+	public List<?> find(String filter) {
 		return repository.findAll();
 	}
 

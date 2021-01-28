@@ -13,6 +13,7 @@ import lombok.Setter;
 public class Article extends AbstractPersistable<Long> {
 	@NotBlank
 	private String name;
+	private Double pu;
 	private Long category;
 
 	public Article id(Long id) {

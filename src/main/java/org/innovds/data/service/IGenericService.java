@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface IGenericService<T, ID> {
 
-	Optional<T> findOne(ID id);
+	<DTO> Optional<DTO> findOne(ID id);
 
 	<DTO> Page<DTO> find(String filter, Pageable pageable);
 
