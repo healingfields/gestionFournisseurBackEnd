@@ -133,6 +133,12 @@ public abstract class AbstractJpaRepository<T, ID> implements IGenericJpaReposit
 	}
 
 	@Override
+	public <DTO> List<DTO> find(String criteria) {
+//		return repository.findAll(pageable);
+		return null;
+	}
+
+	@Override
 	public <DTO> Page<DTO> find(String criteria, Pageable pageable) {
 //		return repository.findAll(pageable);
 		return null;

@@ -45,13 +45,14 @@ public abstract class AbstractGenericService<T, ID> implements IGenericService<T
 	}
 
 	@Override
-	public <DTO> Page<DTO> find(String filter, Pageable pageable) {
-		return repository.find(filter, pageable);
+	public Page<T> find(String filter, Pageable pageable) {
+		return repository.findAll(pageable);
+//		return repository.find(filter, pageable);
 	}
 
 	@Override
-	public <DTO> List<DTO> find(String filter) {
-		return repository.find(filter);
+	public List<T> find(String filter) {
+		return repository.findAll();
 	}
 
 	@Override
