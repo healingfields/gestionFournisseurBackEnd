@@ -31,9 +31,9 @@ public class RestResponseEntityExceptionHandler /* extends ResponseEntityExcepti
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		ex.printStackTrace(pw);
-		ErrorMessage errorMessage = ErrorMessage.builder().error(ex.getMessage())
+		ErrorMessage errorMessage = new ErrorMessage().error(ex.getMessage())
 				.path(((ServletWebRequest) request).getRequest().getRequestURI().toString()).status(status.value())
-				.message(message).trace(sw.toString()).build();
+				.message(message).trace(sw.toString());
 
 		if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)) {
 			request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, WebRequest.SCOPE_REQUEST);

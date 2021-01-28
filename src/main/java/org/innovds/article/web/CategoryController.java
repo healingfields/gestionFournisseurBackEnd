@@ -9,10 +9,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/categories")
 public class CategoryController extends AbstractCrudController<Category, Long> {
 
-//	@GetMapping
-//	private Page<Category> find2(String filter, Pageable pageable) {
-//		// TODO Auto-generated method stub
-////		return super.find(filter, pageable);
-//		return null;
-//	}
 }

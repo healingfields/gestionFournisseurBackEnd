@@ -16,7 +16,7 @@ import org.springframework.data.domain.Pageable;
 public abstract class AbstractGenericService<T, ID> implements IGenericService<T, ID> {
 	protected IGenericJpaRepository<T, ID> repository;
 
-	private Logger log = LoggerFactory.getLogger(this.getClass());
+	protected Logger log = LoggerFactory.getLogger(this.getClass());
 
 //	@PostConstruct
 //	public void init() {

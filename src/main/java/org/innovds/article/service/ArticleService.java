@@ -11,10 +11,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import lombok.extern.java.Log;
-
 @Service
-@Log
 public class ArticleService extends AbstractGenericService<Article, Long> {
 //	
 //	public ArticleService(GenericJpaRepository<Article, Long> repository) {
@@ -46,7 +43,7 @@ public class ArticleService extends AbstractGenericService<Article, Long> {
 //		List<ArticleDto> resultList = repository.createQuery("select a.name as name, a.pu as pu from Article a", ArticleDto.class).getResultList();
 //		List<ArticleDto> resultList = repository.createQuery("select new ArticleDto(a.name, a.pu) from Article a", ArticleDto.class).getResultList();
 		List<ArticleDto> resultList = repository
-				.createQuery("select new org.innovds.article.dto.ArticleDto(a.name, a.pu) from Article a",
+				.createQuery("select new org.innovds.article.dto.ArticleDto(a.id, a.name, a.pu) from Article a",
 						ArticleDto.class)
 				.getResultList();
 //		return super.find(filter);
